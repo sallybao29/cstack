@@ -1,0 +1,14 @@
+push
+translate
+250 250 0
+yrotate
+20
+sphere
+0 0 100
+push
+translate
+0 150 0
+box
+-50 25 25 100 49 50
+display
+quit
