@@ -1,14 +1,134 @@
+################################### torso #####################################
 push
+color
+107 181 182
 translate
-250 250 0
-yrotate
-20
+250 300 0
 sphere
 0 0 100
+#torso band
 push
 translate
-0 150 0
+0 -100 0
+torus
+0 0 30 70
+################################# left leg ###################################
+push
+yrotate
+20
+translate
+-60 -30 0
 box
--50 25 25 100 49 50
+-15 0 -15 30 60 30
+#leg band
+push
+color
+210 150 96
+translate
+0 -60 0
+torus
+0 0 10 20
+#left foot
+color
+107 181 182
+translate
+0 -10 0
+box
+-20 0 80 40 10 80
+################################# right leg ###################################
+pop
+pop
+push
+yrotate
+-20
+translate
+60 -30 0
+box
+15 0 -15 30 60 30
+#leg band
+push
+color
+210 150 96
+translate
+25 -60 0
+torus
+0 0 10 20
+#right foot
+color
+107 181 182
+translate
+0 -10 0
+box
+-20 0 80 40 10 80
+################################### head #####################################
+pop
+pop
+pop
+push
+color
+0 123 149
+translate
+0 130 0
+sphere
+0 0 30
+################################# left arm ###################################
+pop
+push
+translate
+-125 60 0
+sphere
+0 0 40
+translate
+0 -40 0
+color
+107 181 182
+box
+-15 0 -15 30 60 30
+#arm band
+push
+color
+210 150 96
+#left hand
+translate
+0 -60 0
+torus
+0 0 10 20
+translate
+0 -10 0
+color
+107 181 182
+box
+-25 0 -25 50 40 50
+################################# right arm ###################################
+pop
+pop
+push
+translate
+125 60 0
+sphere
+0 0 40
+translate
+0 -40 0
+color
+107 181 182
+box
+-15 0 -15 30 60 30
+#arm band
+push
+color
+210 150 96
+translate
+0 -60 0
+torus
+0 0 10 20
+#right hand
+translate
+0 -10 0
+color
+107 181 182
+box
+-25 0 -25 50 40 50
 display
+save
+golem.png
 quit
