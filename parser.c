@@ -160,38 +160,48 @@ void parse_file ( char * filename,
 			fgets(line, 255, f);
 			sscanf(line, "%lf %lf %lf", &x, &y, &z);
 			tmp = make_scale(x, y, z);
-			matrix_mult(tmp, stk->data[stk->top]);
+			matrix_mult(stk->data[stk->top], tmp);
+			copy_matrix(tmp, stk->data[stk->top]);
 		}
 		else if ( strncmp(line, "translate", strlen(line)) == 0 ) {
 			fgets(line, 255, f);    
 			sscanf(line, "%lf %lf %lf", &x, &y, &z);
 			tmp = make_translate(x, y, z);
-			matrix_mult(tmp, stk->data[stk->top]);
+			matrix_mult(stk->data[stk->top], tmp);
+			copy_matrix(tmp, stk->data[stk->top]);
 		}
 		else if ( strncmp(line, "xrotate", strlen(line)) == 0 ) {
 			fgets(line, 255, f);
 			sscanf(line, "%lf", &angle);
 			angle = angle * (M_PI / 180);
 			tmp = make_rotX( angle);
-			matrix_mult(tmp, stk->data[stk->top]);
+			matrix_mult(stk->data[stk->top], tmp);
+			copy_matrix(tmp, stk->data[stk->top]);
 		}
 		else if ( strncmp(line, "yrotate", strlen(line)) == 0 ) {
 			fgets(line, 255, f);
 			sscanf(line, "%lf", &angle);
 			angle = angle * (M_PI / 180);
 			tmp = make_rotY( angle);
-			matrix_mult(tmp, stk->data[stk->top]);
+			matrix_mult(stk->data[stk->top], tmp);
+			copy_matrix(tmp, stk->data[stk->top]);
 		}
 		else if ( strncmp(line, "zrotate", strlen(line)) == 0 ) {
 			fgets(line, 255, f);
 			sscanf(line, "%lf", &angle);
 			angle = angle * (M_PI / 180);
 			tmp = make_rotZ( angle);
-			matrix_mult(tmp, stk->data[stk->top]);
+  		matrix_mult(stk->data[stk->top], tmp);
+			copy_matrix(tmp, stk->data[stk->top]);
 		}
-		else if ( strncmp(line, "ident", strlen(line)) == 0 ) {
-			//ident(transform);
-		}
+		/*
+			else if ( strncmp(line, "ident", strlen(line)) == 0 ) {
+			ident(transform);
+			}
+			else if ( strncmp(line, "clear", strlen(line)) == 0 ) {
+			//pm->lastcol = 0;
+			}
+		*/
 		else if ( strncmp(line, "color", strlen(line)) == 0 ) {
 			fgets(line, 255, f);
 			sscanf(line, "%lf %lf %lf", &x, &y, &z);
@@ -199,19 +209,12 @@ void parse_file ( char * filename,
 			g.green = y;
 			g.blue = z;
 		}
-		else if ( strncmp(line, "print", strlen(line)) == 0 ) {
-			print_stack(stk);
-			printf("\n");
-		}
 		else if ( strncmp(line, "display", strlen(line)) == 0 ) {
 			display(s);
 		}
 		else if ( strncmp(line, "save", strlen(line)) == 0 ) {
 			fgets(line, 255, f);
 			save_extension(s, line);
-		}
-		else if ( strncmp(line, "clear", strlen(line)) == 0 ) {
-			//pm->lastcol = 0;
 		}
 		else if ( strncmp(line, "quit", strlen(line)) == 0 ) {
 			return;
